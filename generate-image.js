@@ -62,24 +62,34 @@ async function generateImage(prompt, options = {}) {
 async function main() {
     // プロンプトを設定（日本語でも英語でもOK）
     const prompt = `Prompt:
-A clean vector-style collage on white background.
-Center a circular layout containing five evenly spaced icons:
-• a friendly blue-green snake coiled into a “P” shape (Python),
-• a bright yellow hexagon with subtle “JS” letters (JavaScript),
-• a steaming red coffee cup silhouette (Java),
-• a silver pair of angle brackets with two plus signs (C++),
-• a shiny crimson gemstone with a light sparkle (Ruby).
-Flat colors, soft shadows, minimalistic, high resolution, 4K.
+【図解】要件定義からリリースまでのソフトウェア開発フロー  
+白背景に、横長タイムライン形式のインフォグラフィックを作成してください。  
+左から右へ順に 5 つの大きなステップを配置し、各ステップに日本語タイトルと簡潔な説明文 (15 文字以内) を添える。  
+ステップは以下の通り：
 
-Negative prompt:
-realistic photo, text blocks, watermark, blur, noise.
+1️⃣ 要件定義 – 利用者ニーズを整理  
+2️⃣ 設計 – システム構造を設計  
+3️⃣ 実装 – コードを開発  
+4️⃣ テスト – 品質を検証  
+5️⃣ リリース – 本番環境へ公開  
 
+◾️デザイン要件  
+– フラットベクターアイコンを各ステップ上に置く（例：書類、設計図、PC、虫眼鏡、ロケット）  
+– 吹き出しや矢印で流れを強調  
+– 見出しフォントは太ゴシック、本文は細ゴシック  
+– カラーパレット：#1D4ED8, #22C55E, #FACC15, #F97316, #EF4444（左→右の順で適用）  
+– 余白を広く取り、情報を詰め込みすぎない  
+– 解像度 4K、アスペクト比 16:9  
+
+Negative prompt: 写実的写真, 透かし, ノイズ, 低解像度, 過度な装飾
   `
 
     // オプション設定
     const options = {
         model: 'gpt-image-1',
-        size: '1024x1024',
+        // size: '1024x1024', // 正方形
+        size: '1536x1024', // 横長
+        // size: '1024x1536', // 縦長
         quality: 'medium',
         filename: 'generated-image.png',
     }
